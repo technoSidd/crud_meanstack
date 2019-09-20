@@ -1,0 +1,56 @@
+<div class="card">
+  <div class="card-header">
+    <div class="form-group">
+      <div class="col-md-10">
+        <h1>MeanStack Application</h1>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="row">
+      <div class="col-md-6">
+        <form (submit)="addContact()">
+          <div *ngFor= "let contact of contacts1">
+            <input type="hidden" name="_id" [(ngModel)]="_id" value="{{contact._id}}">
+          </div>
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" [(ngModel)]="first_name" name="first_name" placeholder="Enter first name">
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" [(ngModel)]="last_name" name="last_name" placeholder="Enter last name">
+          </div>
+          <div class="form-group">
+            <label>Phone No.</label>
+            <input type="text" class="form-control" [(ngModel)]="phone" name="phone" placeholder="Enter phone no.">
+          </div>
+          <div class="form-group">
+            <button ytpe="submit" class="btn btn-success">Add</button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-striped">
+          <thead>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </thead>
+          <tbody>
+            <tr *ngFor = "let contact of contacts1">
+                <td><a href="{{contact._id}}">{{contact.first_name}}</a></td>
+                <td>{{contact.last_name}}</td>
+                <td>{{contact.phone}}</td>
+                <td>
+                    <input type="button" class="btn btn-danger" (click) = "deleteContact(contact._id)" value="Delete">
+                    <input type="button" class="btn btn-dark" (click) = "editContact(contact._id)" value="Edit">
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
